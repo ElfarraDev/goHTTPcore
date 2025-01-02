@@ -38,3 +38,34 @@ var StatusCodes = map[int]string{
 	502: "Bad Gateway",
 	503: "Service Unavailable",
 }
+
+// NewResponse creates a new Response instance
+func NewResponse(writer io.Writer) *Response {
+	return &Response{
+		Headers:    make(map[string]string),
+		StatusCode: 200,
+		StatusText: StatusCodes[200],
+		Writer:     writer,
+	}
+}
+
+// SetStatus sets the response status code and text
+func (r *Response) SetStatus(code int) {
+	r.StatusCode = code
+	if text, ok := StatusCodes[code]; ok {
+		r.StatusText = text
+	} else {
+		r.StatusText = "Unknown Status"
+	}
+}
+
+// SetHeader sets a response header
+func (r *Response) SetHeader(key, value string) {
+	r.Headers[key] = value
+}
+
+// Write writes data to the response body
+func (r *Response) Write(data []byte) error {
+	r.Body = append(r.Body, data...)
+	return nil
+}
