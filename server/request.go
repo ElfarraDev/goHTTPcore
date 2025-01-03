@@ -1,4 +1,4 @@
-package request
+package server
 
 type Request struct {
 	Method      string            // GET, POST, PUT, DELETE

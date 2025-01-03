@@ -15,7 +15,7 @@ Client (192.168.1.100:49152) → Server (203.0.113.10:80)
 +-------------------+        +------------------+
 */
 
-package socket
+package server
 
 import "net"
 
