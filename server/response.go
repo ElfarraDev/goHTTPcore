@@ -1,4 +1,4 @@
-package response
+package server
 
 import (
 	"io"
@@ -9,7 +9,7 @@ type Response struct {
 	StatusText string            // Text description of the status code
 	Headers    map[string]string // metadata about the response (content type, content length, etc.)
 	Body       []byte            // response body: json data or form data or file data
-	Write      io.Writer         // write the response to the client
+	Writer     io.Writer         // write the response to the client
 }
 
 var StatusCodes = map[int]string{
